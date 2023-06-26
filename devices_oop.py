@@ -131,6 +131,7 @@ class TV(SpeakerDevice):
     def __init__(
             self,
             model: str,
+            display_size: float,
             min_volume: int = 0,
             max_volume: int = 10,
             power: bool = False,
@@ -139,6 +140,7 @@ class TV(SpeakerDevice):
             start_channel: int = 1,
             max_channels: int = 100):
         super().__init__(model, power, volume, min_volume, max_volume)
+        self.display_size = display_size
         self.input_sources = input_sources
         self.input_source = input_sources[0]
         self.start_channel = start_channel
@@ -280,8 +282,9 @@ class MobilePhone(SpeakerDevice):
             print(f"{name} ({number}) прислал(а) сообщение: \"{text}\"")
 
 
-new_tv = TV('Some classy TV')
+new_tv = TV('Some classy TV', 40)
 print(new_tv.model)
+print(new_tv.display_size)
 new_tv.switch_input_source('AV')
 print(new_tv.input_source)
 new_tv.switch_channel(2)
